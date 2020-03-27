@@ -21,3 +21,47 @@ plt.xlabel(r'$t$')
 plt.ylabel(r'$y$')
 # %%
 # Example 2: Cannon fired upwards
+def upward_cannon(t, y):
+    return [y[1], -0.5]
+
+
+def hit_ground(t, y):
+    return y[0]
+
+
+def apex(t, y):
+    return y[1]
+
+
+hit_ground.terminal = True
+hit_ground.direction = -1
+# %%
+sol = solve_ivp(
+    fun=upward_cannon,
+    t_span=[0, 100],
+    y0=[0, 10],
+    events=(hit_ground, apex),
+    dense_output=True,
+)
+# %%
+t = np.linspace(0, *sol.t_events[0], 100)
+pos = sol.sol(t)
+fig, ax = plt.subplots(2, 1,)
+ax[0].plot(t, pos[0])
+ax[0].set_title('Cannon Launch Example')
+ax[0].set_ylabel(r'$y$', rotation='horizontal')
+_, ymax = ax[0].get_ylim()
+ax[0].set_ylim(0, ymax)
+ax[0].annotate(
+    s='apex',
+    xy=[sol.t_events[1], sol.y_events[1].ravel()[0]],
+    xytext=(-10, -50),
+    textcoords='offset points',
+    arrowprops=dict(arrowstyle='->', connectionstyle='arc3', color='k')
+)
+ax[1].plot(t, pos[1])
+ax[1].set_ylabel(r"$y'$", rotation='horizontal')
+
+for i in range(2):
+    _, xmax = ax[i].get_xlim()
+    ax[i].set_xlim(0, xmax)
