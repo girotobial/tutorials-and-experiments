@@ -3,6 +3,8 @@ import numpy as np
 from scipy.integrate import solve_ivp
 import matplotlib.pyplot as plt
 from seaborn import set_style
+
+set_style('whitegrid')
 # %%
 # Example 1: exponential decay
 def exponential_decay(t, y):
