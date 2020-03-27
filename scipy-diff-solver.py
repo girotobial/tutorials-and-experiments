@@ -65,3 +65,29 @@ ax[1].set_ylabel(r"$y'$", rotation='horizontal')
 for i in range(2):
     _, xmax = ax[i].get_xlim()
     ax[i].set_xlim(0, xmax)
+
+# %%
+# Example 3: Lotka-Volterra equations
+
+
+def lotkavolterra(t, z, a, b, c, d):
+    x, y = z
+    return [a*x - b*x*y, -c*y + d*x*y]
+
+
+# %%
+sol = solve_ivp(
+    fun=lotkavolterra,
+    t_span=[0, 15],
+    y0=[10, 5],
+    args=(1.5, 1, 3, 1),
+    dense_output=True
+)
+# %%
+t = np.linspace(0, 15, 300)
+z = sol.sol(t)
+# %%
+plt.plot(t, z.T);
+plt.xlabel('t')
+plt.legend(['prey', 'predators'], shadow=True)
+plt.title('Lotka-Volterra System')
