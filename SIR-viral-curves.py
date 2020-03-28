@@ -6,6 +6,8 @@ import seaborn as sns
 
 # %%
 # Differential equations
+
+
 def S_dash(t, S, I, transm):
     return - transm * S * I
 
@@ -25,6 +27,8 @@ def SIR_model(t, y, transm, recov):
         I_dash(t, S, I, transm, recov),
         R_dash(t, S, I, recov)
     ]
+
+
 # %%
 # Setup initial conditions
 # Population size, N
@@ -57,7 +61,7 @@ y = sol.sol(t).T
 labels = ['Susceptible', 'Infected', 'Recovered']
 plt.plot(t, y)
 plt.xlabel('Time')
-plt.title(f'SIR Model $R_0$={basic_reproduction_number}');
+plt.title(f'SIR Model $R_0$={basic_reproduction_number}')
 for i, label in enumerate(labels):
     plt.text(t[-1] + 0.1, y[-1, i], label, color=f'C{i}')
 plt.ylim(0, 1)

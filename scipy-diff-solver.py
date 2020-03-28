@@ -7,6 +7,8 @@ from seaborn import set_style
 set_style('whitegrid')
 # %%
 # Example 1: exponential decay
+
+
 def exponential_decay(t, y):
     return -0.5 * y
 
@@ -21,6 +23,8 @@ plt.xlabel(r'$t$')
 plt.ylabel(r'$y$')
 # %%
 # Example 2: Cannon fired upwards
+
+
 def upward_cannon(t, y):
     return [y[1], -0.5]
 
@@ -87,7 +91,7 @@ sol = solve_ivp(
 t = np.linspace(0, 15, 300)
 z = sol.sol(t)
 # %%
-plt.plot(t, z.T);
+plt.plot(t, z.T)
 plt.xlabel('t')
 plt.legend(['prey', 'predators'], shadow=True)
 plt.title('Lotka-Volterra System')
