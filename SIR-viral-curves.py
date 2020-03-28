@@ -54,8 +54,19 @@ sol = solve_ivp(
 )
 t = np.linspace(0, max_time, 300)
 y = sol.sol(t).T
+labels = ['Susceptible', 'Infected', 'Recovered']
 plt.plot(t, y)
 plt.xlabel('Time')
-plt.legend(['Susceptible', 'Infected', 'Recovered'])
-plt.title(f'SIR Model $R_0$={basic_reproduction_number}')
+plt.title(f'SIR Model $R_0$={basic_reproduction_number}');
+for i, label in enumerate(labels):
+    plt.text(t[-1] + 0.1, y[-1, i], label, color=f'C{i}')
+plt.ylim(0, 1)
+_, max_x = plt.xlim()
+plt.xlim(0, max_x * 1.2)
+sns.despine()
+plt.show()
+
+# %%
+plt.style.available
+
 # %%
