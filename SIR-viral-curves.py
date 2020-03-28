@@ -65,8 +65,3 @@ _, max_x = plt.xlim()
 plt.xlim(0, max_x * 1.2)
 sns.despine()
 plt.show()
-
-# %%
-plt.style.available
-
-# %%
