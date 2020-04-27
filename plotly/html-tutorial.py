@@ -108,4 +108,4 @@ if __name__ == '__main__':
     fig.update_layout(
         title='How much should you charge in a Berline neighborhood?'
     )
-    pio.write_html(fig, file='index.html', auto_open=True)
+    pio.write_html(fig, file='plotly/index.html', auto_open=False)
