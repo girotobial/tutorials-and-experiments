@@ -81,8 +81,8 @@ def clean_data(df):
 if __name__ == '__main__':
     # Import csv
     df = pd.read_csv(
-        (r'https://raw.githubusercontent.com/elizabethts/publish-plotly-website'
-        r'/master/airbnb.csv')
+        (r'https://raw.githubusercontent.com/elizabethts'
+        r'/publish-plotly-website/master/airbnb.csv')
     )
 
     # Clean data
