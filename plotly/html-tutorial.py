@@ -8,6 +8,7 @@ https://t.co/rSxex593JM?amp=1
 
 import pandas as pd
 import plotly.express as px
+import plotly.io as pio
 
 def clean_data(df):
     '''
@@ -107,4 +108,4 @@ if __name__ == '__main__':
     fig.update_layout(
         title='How much should you charge in a Berline neighborhood?'
     )
-    fig.show()
+    pio.write_html(fig, file='index.html', auto_open=True)
