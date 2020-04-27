@@ -7,6 +7,7 @@ https://t.co/rSxex593JM?amp=1
 '''
 
 import pandas as pd
+import plotly.express as px
 
 def clean_data(df):
     '''
@@ -85,3 +86,25 @@ if __name__ == '__main__':
 
     # Clean data
     df = clean_data(df)
+
+    # Create visulisation
+    fig = px.scatter(
+        df,
+        x='Neighborhood',
+        y='Price (US Dollars)',
+        size='Accommodates',
+        hover_data=[
+            'Bedrooms',
+            'Wifi',
+            'Cable TV',
+            'Kitchen',
+            'Washer',
+            'Number of Reviews'
+        ],
+        color='Room Type'
+    )
+    fig.update_layout(template='plotly_white')
+    fig.update_layout(
+        title='How much should you charge in a Berline neighborhood?'
+    )
+    fig.show()
